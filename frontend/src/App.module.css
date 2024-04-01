@@ -1,2 +1,5 @@
 .Container {
+  width: 480px;
+  height: 600px;
+  font-family: Arial, sans-serif;
 }

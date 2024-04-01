@@ -1,0 +1,13 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  height: 100%;
+  gap: 24px;
+}
+
+.Header {
+  font-size: 24pt;
+}
