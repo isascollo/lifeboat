@@ -40,21 +40,24 @@ const Register: FunctionComponent<RegisterProps> = ({ integration }) => {
   };
 
   const handleSubmit = async () => {
-    setEmailValid(/\S+@\S+\.\S+/.test(formData.email));
+    const isEmailValid = /\S+@\S+\.\S+/.test(formData.email);
     const isAllDigits = formData.mobileNumber
       .trim()
       .split("")
       .every((char) => char >= "0" && char <= "9");
     const isValidLength = formData.mobileNumber.trim().length === 10;
-    setMobileValid(isAllDigits && isValidLength);
+    const isMobileValid = isAllDigits && isValidLength;
     const passwordError = validatePassword(
       formData.password,
       formData.confirmPassword,
     );
+
+    setEmailValid(isEmailValid);
+    setMobileValid(isMobileValid);
     setPasswordErrorMessage(passwordError);
 
-    if (emailValid && mobileValid && passwordError === "") {
-      const requestData: RegistrationData = {
+    if (isEmailValid && isMobileValid && passwordError === "") {
+      const requestData = {
         firstName: formData.firstName,
         lastName: formData.lastName,
         email: formData.email,
